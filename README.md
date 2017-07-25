@@ -20,7 +20,7 @@ protein-DNA-binding-prediction
 | file name | chromosome number | loci | sequence | label |
 | :--: | :--: | :--: | :--: | :--: |
 | train.data | chr # | loci | length = 101 | 0 negative, 1 positive |
-| test.data | N/A| N/A | length = 101 | N/A |
+| test.data | N / A| N / A | length = 101 | N / A |
 | test_ans.data.txt | chr # | loci | length = 101 | 0 negative, 1 positive |
 
 ## Preprocessing
