@@ -2,7 +2,7 @@ protein-DNA-binding-prediction
 ===
 
 ## Data description
-source: CHIP-seq data https://www.encodeproject.org/experiments/ENCSR000AQU/
+* data source: CHIP-seq data https://www.encodeproject.org/experiments/ENCSR000AQU/
 * each column is separted by 'one space'
 
 > **Training data**  <br/>
