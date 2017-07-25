@@ -24,5 +24,5 @@ source: CHIP-seq data https://www.encodeproject.org/experiments/ENCSR000AQU/
 
 
 ## Reference
-http://www.nature.com/nbt/journal/v33/n8/full/nbt.3300.html
+http://www.nature.com/nbt/journal/v33/n8/full/nbt.3300.html <br/>
 http://www.nature.com/nbt/journal/v33/n8/extref/nbt.3300-S2.pdf
