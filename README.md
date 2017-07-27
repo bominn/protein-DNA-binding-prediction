@@ -1,5 +1,9 @@
 protein-DNA-binding-prediction
 ===
+## Usage of python program
+> python3 encodingSeq_train.py train.data 10(flanking length) <br/>
+> python3 encodingSeq_test.py test.data 10(flanking length)
+
 
 ## Data description
 * data source: CHIP-seq data https://www.encodeproject.org/experiments/ENCSR000AQU/
