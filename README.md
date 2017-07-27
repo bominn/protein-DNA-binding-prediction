@@ -3,7 +3,7 @@ protein-DNA-binding-prediction
 
 ## Data description
 * data source: CHIP-seq data https://www.encodeproject.org/experiments/ENCSR000AQU/
-* each column is separted by 'one space'
+* each column is separated by 'one space'
 
 > **Training data**  <br/>
 > sample size = 77531 <br/>
