@@ -1,13 +1,14 @@
 protein-DNA-binding-prediction
 ===
 ## Usage of python program
-> python3 encodingSeq_train.py train.data 10(flanking length) <br/>
-> python3 encodingSeq_test.py test.data 10(flanking length)
-
+```python
+python3 encodingSeq_train.py train.data 10(flanking length)
+python3 encodingSeq_test.py test.data 10(flanking length)
+```
 
 ## Data description
-* data source: CHIP-seq data https://www.encodeproject.org/experiments/ENCSR000AQU/
-* each column is separated by 'one space'
+* Data source: CHIP-seq data https://www.encodeproject.org/experiments/ENCSR000AQU/
+* Each column is separated by 'one space'.
 
 > **Training data**  <br/>
 > sample size = 77531 <br/>
@@ -28,12 +29,49 @@ protein-DNA-binding-prediction
 | test_ans.data.txt | chr # | loci | length = 101 | 0 negative, 1 positive |
 
 ## Preprocessing
-
+I use encodingSeq_train.py and encodingSeq_test.py to convert train.data and test.data to pickle format, turning the sequence data into one-hot encoding form. Besides, the flanking size of the sequence can be determined by users.
 
 ## Model description
 
 
+
+
+## Training parameters and settings
+> batch size = 256 <br/>
+> training steps = 10000 <br/>
+> learning rate = 0.25 (starting rate) with exponential decay after 6000 steps, decay rate = 0.88 <br/>
+> optimizer: GradientDescentOptimize <br/>
+
 ## Results
+* training process
+
+| Steps | minibatch loss | minibatch accuracy | validation accuracy |
+| :--: | :--: | :--: | :--: |
+| 0 | 1.573298 | 47.266 %	| 49.337 % |
+| 500	| 0.789611	| 57.031 % | 60.610 % |
+| 1000 | 0.618249	| 74.609 %	| 72.858 % |
+| 1500 | 0.538275	| 78.516 %	| 77.651 % |
+| 2000 | 0.525321	| 82.422 % | 82.216 %	|
+| 2500 | 0.452186	| 82.812 %	| 83.434 %	|
+| 3000 | 0.373034	| 87.109 %	| 87.056 %	|
+| 3500 | 0.355203	| 89.844 %	| 87.546 %	|
+| 4000 | 0.355099	| 89.844 %	| 87.437 %	|
+| 4500 | 0.410359	| 86.719 %	| 87.484 %	|
+| 5000 | 0.281168	| 91.016 %	| 89.212 %	|
+| 5500 | 0.282837	| 91.406 %	| 89.274 %	|
+| 6000 | 0.357626	| 86.719 %	| 86.416 %	|
+| 6500 | 0.244438 | 93.359 %	| 89.677 %	|
+| 7000 | 0.261607 | 90.234 %	| 86.973 %	|
+| 7500 | 0.188995	| 94.922 %	| 89.883 %	|
+| 8000 | 0.231573	| 91.016 %	| 89.548 %	|
+| 8500 | 0.181226	| 94.531 %	| 89.130 %	|
+| 9000 | 0.251837	| 92.188 %	| 89.677 %	|
+| 9500 | 0.245221	| 91.406 %	| 88.268 %	|
+| 10000 | 0.247332	| 91.797 %	| 89.026 %	|
+
+
+> <img src="https://github.com/andrewkgs/protein-DNA-binding-prediction/blob/master/result.png">
+* **Test accuracy = 89.006 %**
 
 
 ## Future work
