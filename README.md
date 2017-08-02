@@ -70,7 +70,7 @@ I use encodingSeq_train.py and encodingSeq_test.py to convert train.data and tes
 | 10000 | 0.247332	| 91.797 %	| 89.026 %	|
 
 
-> <img src="https://github.com/andrewkgs/protein-DNA-binding-prediction/blob/master/result.png">
+<img src="https://github.com/andrewkgs/protein-DNA-binding-prediction/blob/master/result.png"> <br/>
 * **Test accuracy = 89.006 %**
 
 
