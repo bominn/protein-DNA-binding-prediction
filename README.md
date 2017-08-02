@@ -14,15 +14,15 @@ The objective of this task is to correctly predict whether the given DNA sequenc
 * Each column is separated by 'one space'.
 
 * **Training data**  <br/>
-> sample size = 77531 <br/>
+> sample size: 77531 <br/>
 > data format example (abbrev.): >chr3:13238050-13238150 CTGGCTGTCA...AGAAGAACAC 1
 
 * **Testing data** <br/>
-> samlpe size = 19383 <br/>
+> samlpe size: 19383 <br/>
 > data format example (abbrev.): CAGTTGGCCT...CACAAGTAGA
 
 * **Testing data with label** <br/>
-> sample size = 19383 (9709 positive, 9674 negative) <br/>
+> sample size: 19383 (9709 positive, 9674 negative) <br/>
 > data format example (abbrev.): >chr20:42901189-42901289 CAGTTGGCCT...CACAAGTAGA 1
 
 | file name | chromosome number | loci | sequence | label |
@@ -84,12 +84,12 @@ return tf.matmul(drop, layer5_weights) + layer5_biases
 | 10000 | 0.247332	| 91.797 %	| 89.026 % |
 
 <img src="https://github.com/andrewkgs/protein-DNA-binding-prediction/blob/master/result.png"> <br/>
-* **Test accuracy = 89.006 %**
+* **Test accuracy: 89.006 %**
 
 
 ## Future work
 The model I used in the task is not complicated at all, and maybe trying models with more layers can get better results.
-Also, I think RNN is an another way to build the model.
+Also, I think RNN is an another way to build or improve the model.
 
 ## Reference
 > MNIST CNN tutorial <br/>
