@@ -6,22 +6,22 @@ python3 encodingSeq_train.py train.data 10(flanking length)
 python3 encodingSeq_test.py test.data 10(flanking length)
 ```
 ## Task description
-The objective of this task is to correctly predict whether the given DNA sequence can bind on CTCF protein, and I tried to finish the task by using the CNN technique of deep learning.
+The objective of this task is to correctly predict whether the given DNA sequence can bind on CTCF protein, and I tried to finish the task by using the CNN technique of deep learning. The approach mentioned below was inspired by MNIST hand-written digit classification.
 
 
 ## Data description
 * Data source: CHIP-seq data https://www.encodeproject.org/experiments/ENCSR000AQU/
 * Each column is separated by 'one space'.
 
-> **Training data**  <br/>
+* **Training data**  <br/>
 > sample size = 77531 <br/>
 > data format example (abbrev.): >chr3:13238050-13238150 CTGGCTGTCA...AGAAGAACAC 1
 
-> **Testing data** <br/>
+* **Testing data** <br/>
 > samlpe size = 19383 <br/>
 > data format example (abbrev.): CAGTTGGCCT...CACAAGTAGA
 
-> **Testing data with label** <br/>
+* **Testing data with label** <br/>
 > sample size = 19383 (9709 positive, 9674 negative) <br/>
 > data format example (abbrev.): >chr20:42901189-42901289 CAGTTGGCCT...CACAAGTAGA 1
 
