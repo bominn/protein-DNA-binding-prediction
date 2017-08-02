@@ -50,11 +50,11 @@ return tf.matmul(drop, layer5_weights) + layer5_biases
 ```
 
 ## Training parameters and settings
-> batch size = 256 <br/>
-> training steps = 10000 <br/>
-> learning rate = 0.25 (starting rate) with exponential decay after 6000 steps, decay rate = 0.88 <br/>
-> optimizer: GradientDescentOptimize <br/>
-> using regularization to eliminate overfitting circumstances
+* batch size = 256 <br/>
+* training steps = 10000 <br/>
+* learning rate = 0.25 (starting rate) with exponential decay after 6000 steps, decay rate = 0.88 <br/>
+* optimizer: GradientDescentOptimize <br/>
+* using regularization to eliminate overfitting circumstances
 
 ## Results
 * Training process
@@ -89,7 +89,7 @@ return tf.matmul(drop, layer5_weights) + layer5_biases
 
 ## Future work
 The model I used in the task is not complicated at all, and maybe trying models with more layers can get better results.
-ALso, I think RNN is an another way to build the model.
+Also, I think RNN is an another way to build the model.
 
 ## Reference
 > MNIST CNN tutorial <br/>
