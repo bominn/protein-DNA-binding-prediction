@@ -36,23 +36,36 @@ I use encodingSeq_train.py and encodingSeq_test.py to convert train.data and tes
 
 ## Model description
 ```
-conv = tf.nn.conv2d(data, layer1_weights, [1, stride_1, stride_1, 1], padding='SAME')
-hidden = tf.nn.relu(conv + layer1_biases)
-conv = tf.nn.conv2d(hidden, layer2_weights, [1, stride_2, stride_2, 1], padding='SAME')
-hidden = tf.nn.relu(conv + layer2_biases)
-shape = hidden.get_shape().as_list()
-reshape = tf.reshape(hidden, [shape[0], shape[1] * shape[2] * shape[3]])
-hidden = tf.nn.relu(tf.matmul(reshape, layer3_weights) + layer3_biases)
-drop = tf.nn.dropout(hidden, 0.7)
-hidden = tf.nn.relu(tf.matmul(drop, layer4_weights) + layer4_biases)
-drop = tf.nn.dropout(hidden, 0.7)
-return tf.matmul(drop, layer5_weights) + layer5_biases
+def model_train(data):
+    conv = tf.nn.conv2d(data, layer1_weights, [1, stride_1, stride_1, 1], padding='SAME')
+    hidden = tf.nn.relu(conv + layer1_biases)
+    drop = tf.nn.dropout(hidden, 0.75)
+    conv = tf.nn.conv2d(drop, layer2_weights, [1, stride_2, stride_2, 1], padding='SAME')
+    hidden = tf.nn.relu(conv + layer2_biases)
+    drop = tf.nn.dropout(hidden, 0.75)
+    shape = hidden.get_shape().as_list()
+    reshape = tf.reshape(hidden, [shape[0], shape[1] * shape[2] * shape[3]])
+    hidden = tf.nn.relu(tf.matmul(reshape, layer3_weights) + layer3_biases)
+    drop = tf.nn.dropout(hidden, 0.75)
+    hidden = tf.nn.relu(tf.matmul(drop, layer4_weights) + layer4_biases)
+    return tf.matmul(hidden, layer5_weights) + layer5_biases
 ```
-
+```
+def model(data):
+    conv = tf.nn.conv2d(data, layer1_weights, [1, stride_1, stride_1, 1], padding='SAME')
+    hidden = tf.nn.relu(conv + layer1_biases)
+    conv = tf.nn.conv2d(drop, layer2_weights, [1, stride_2, stride_2, 1], padding='SAME')
+    hidden = tf.nn.relu(conv + layer2_biases)
+    shape = hidden.get_shape().as_list()
+    reshape = tf.reshape(hidden, [shape[0], shape[1] * shape[2] * shape[3]])
+    hidden = tf.nn.relu(tf.matmul(reshape, layer3_weights) + layer3_biases)
+    hidden = tf.nn.relu(tf.matmul(drop, layer4_weights) + layer4_biases)
+    return tf.matmul(hidden, layer5_weights) + layer5_biases
+```
 ## Training parameters and settings
-* batch size = 256 <br/>
-* training steps = 10000 <br/>
-* learning rate = 0.25 (starting rate) with exponential decay after 6000 steps, decay rate = 0.88 <br/>
+* batch size = 290 (train_dataset.shape[0] // 200) <br/>
+* training steps = 15000 <br/>
+* learning rate = 0.25 (starting rate) with exponential decay after 5000 steps, decay rate = 0.96 <br/>
 * optimizer: GradientDescentOptimize <br/>
 * using regularization to eliminate overfitting circumstances
 
@@ -61,30 +74,40 @@ return tf.matmul(drop, layer5_weights) + layer5_biases
 
 | Steps | minibatch loss | minibatch accuracy | validation accuracy |
 | :--: | :--: | :--: | :--: |
-| 0 | 1.573298 | 47.266 %	| 49.337 % |
-| 500	| 0.789611	| 57.031 % | 60.610 % |
-| 1000 | 0.618249	| 74.609 %	| 72.858 % |
-| 1500 | 0.538275	| 78.516 %	| 77.651 % |
-| 2000 | 0.525321	| 82.422 % | 82.216 % |
-| 2500 | 0.452186	| 82.812 %	| 83.434 % |
-| 3000 | 0.373034	| 87.109 %	| 87.056 % |
-| 3500 | 0.355203	| 89.844 %	| 87.546 % |
-| 4000 | 0.355099	| 89.844 %	| 87.437 % |
-| 4500 | 0.410359	| 86.719 %	| 87.484 % |
-| 5000 | 0.281168	| 91.016 %	| 89.212 % |
-| 5500 | 0.282837	| 91.406 %	| 89.274 % |
-| 6000 | 0.357626	| 86.719 %	| 86.416 % |
-| 6500 | 0.244438 | 93.359 %	| 89.677 % |
-| 7000 | 0.261607 | 90.234 %	| 86.973 % |
-| 7500 | 0.188995	| 94.922 %	| 89.883 % |
-| 8000 | 0.231573	| 91.016 %	| 89.548 % |
-| 8500 | 0.181226	| 94.531 %	| 89.130 % |
-| 9000 | 0.251837	| 92.188 %	| 89.677 % |
-| 9500 | 0.245221	| 91.406 %	| 88.268 % |
-| 10000 | 0.247332	| 91.797 %	| 89.026 % |
+| 0 | 1.036431 | 52.759 % | 50.663 %	|
+| 500 | 0.683988 | 62.069 % | 60.486 % |
+| 1000 | 0.624465 | 65.862 % | 71.129 % |
+| 1500 | 0.633703	| 68.276 % | 78.105 % |
+| 2000 | 0.470493	| 78.621 % | 84.543 % |
+| 2500 | 0.467052	| 81.724 % | 80.426 % |
+| 3000 | 0.340815	| 85.517 % | 87.535 % |
+| 3500 | 0.343168	| 87.241 % | 88.155 % |
+| 4000 | 0.281665	| 90.000 % | 88.222 % |
+| 4500 | 0.316459	| 89.310 % | 89.223 % |
+| 5000 | 0.306602	| 88.621 % | 89.651 % |
+| 5500 | 0.323350	| 85.517 % | 89.656 % |
+| 6000 | 0.370277	| 84.828 % | 88.278 % |
+| 6500 | 0.326758	| 86.897 % | 89.764 % |
+| 7000 | 0.319943	| 87.586 % | 90.069 % |
+| 7500 | 0.260177	| 90.345 % | 90.058 % |
+| 8000 | 0.330911	| 87.931 % | 89.795 % |
+| 8500 | 0.266430	| 91.034 % | 90.378 % |
+| 9000 | 0.265763	| 90.000 % | 90.528 % |
+| 9500 | 0.285275	| 91.724 % | 90.358 % |
+| 10000 | 0.260739 | 90.690 % | 90.487 % |
+| 10500 | 0.273746 | 89.655 % | 89.919 % |
+| 11000 | 0.281265 | 91.034 % | 90.590 % |
+| 11500 | 0.278727 | 91.034 % | 90.512 % |
+| 12000 | 0.310407 | 88.621 % | 90.595 % |
+| 12500 | 0.282559 | 87.586 % | 90.523 % |
+| 13000 | 0.295398 | 89.310 % | 90.812 % |
+| 13500 | 0.254486 | 90.000 % | 90.636 % |
+| 14000 | 0.266505 | 89.655 % | 90.672 % |
+| 14500 | 0.257149 | 90.690 % | 90.579 % |
+| 15000 | 0.259550 | 88.966 % | 90.559 % |
 
-<img src="https://github.com/andrewkgs/protein-DNA-binding-prediction/blob/master/result.png"> <br/>
-* **Test accuracy: 89.006 %**
+<img src="https://github.com/andrewkgs/protein-DNA-binding-prediction/blob/master/training_accuracy.png"> <br/>
+* **Test accuracy: 90.517 %**
 
 
 ## Future work
