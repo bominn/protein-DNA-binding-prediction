@@ -10,7 +10,7 @@ The objective of this task is to correctly predict whether the given DNA sequenc
 
 
 ## Data description
-* Data source: CHIP-seq data https://www.encodeproject.org/experiments/ENCSR000AQU/
+* Data source: CHIP-seq data from https://www.encodeproject.org/experiments/ENCSR000AQU/
 * Each column is separated by 'one space'.
 
 * **Training data**  <br/>
