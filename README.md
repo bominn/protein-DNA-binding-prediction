@@ -112,7 +112,7 @@ def model(data):
 
 ## Future work
 The model I used in the task is not complicated at all, and maybe trying models with more layers can get better results.
-Also, I think RNN is an another way to build or improve the model.
+Also, I think RNN might be an another way to build or improve the model.
 
 ## Reference
 > MNIST CNN tutorial <br/>
